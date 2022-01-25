@@ -37,4 +37,4 @@ Gezryl Beato Gallego (toffeegz) is a Full Stack Developer based in Philippines. 
 - [Twitter](https://twitter.com/toffeegz_)
 
 For Questions and Suggestions
-Please kindly mail me at [gezrylclarizg@gmail.com](mailto:gezrylclarizg@gmail.com])
+Please kindly mail me at [gezrylclarizg@gmail.com](mailto:gezrylclarizg@gmail.com)
