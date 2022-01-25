@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>Company Wi-fi > login</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
+		<link rel="stylesheet" type="text/css" media="all" href="css/tailwind.min.css">
+	</head>
+	<body>
+		<section class="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+			$(if chap-id)
+				<form name="sendin" action="$(link-login-only)" method="post">
+					<input type="hidden" name="username" />
+					<input type="hidden" name="password" />
+					<input type="hidden" name="dst" value="$(link-orig)" />
+					<input type="hidden" name="popup" value="true" />
+				</form>
+		
+				<script type="text/javascript" src="/md5.js"></script>
+				<script type="text/javascript">
+				<!--
+					function doLogin() {
+					document.sendin.username.value = document.login.username.value;
+					document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+					document.sendin.submit();
+					return false;
+					}
+				//-->
+				</script>
+			$(endif)
+
+
+			<div class=" flex flex-col border-gray-200 bg-white border px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-lg w-50 max-w-md">
+				<div class="items-center flex justify-center">
+					<img src="img/logo.png" alt="Home" class="h-auto w-2/3" />
+				</div>
+				<div class="w-full text-center my-2">
+					<p class="text-gray-600 text-sm">Please log on to use the hotspot service.</p>
+					$(if error)
+						<div class="text-red-500 text-sm">$(error)</div>
+					$(endif)
+				</div>
+
+				<form class="w-full" id="loginform" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+					<input type="hidden" name="dst" value="$(link-orig)" />
+					<input type="hidden" name="popup" value="true" />
+	
+					<div class="mb-3 w-full">
+						<input class=" text-sm placeholder-gray-400 px-4 rounded-lg border border-gray-200 bg-gray-100 w-full py-3 focus:outline-none focus:border-blue-400 " type="text" name="username" value="$(username)" required="" placeholder="Username">
+					</div>
+					<div class="mb-3 w-full">
+						<input class=" text-sm placeholder-gray-400 px-4 rounded-lg border border-gray-200 bg-gray-100 w-full py-3 focus:outline-none focus:border-blue-400 " name="password" type="password" required="" placeholder="Password">
+					</div>
+					<div class="flex w-full my-3">
+						<button class="flex mt-2 items-center justify-center focus:outline-none text-white font-bold text-xs tracking-wide bg-blue-400 hover:bg-blue-500 rounded-lg py-3 w-full transition duration-150 ease-in uppercase" 
+							type="submit">
+							Log In
+						</button>
+					</div>		
+					$(if trial == 'yes')
+						<div class="w-full flex justify-center">
+							<div class="flex justify-evenly space-x-2 w-64">
+								<span class="bg-gray-300 h-px flex-grow t-2 relative top-2"></span>
+								<span class="flex-none uppercase text-xs text-gray-400 font-semibold">or</span>
+								<span class="bg-gray-300 h-px flex-grow t-2 relative top-2"></span>
+							</div>
+						</div>
+						<div class="flex w-full my-3">
+							<a id="btnLoginAsGuest" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class=" flex items-center justify-center focus:outline-none hover:text-gray-200 text-white font-bold text-xs tracking-wide bg-gray-600 hover:bg-gray-700 rounded-lg py-3 w-full transition duration-150 ease-in ">
+								<span class="mr-2 uppercase">Log in as Guest</span>
+							</a>
+						</div>
+					$(endif)
+				</form>
+			</div>
+			$(if error)
+				
+			$(else)		
+			<div class="fixed top-10 w-full" id="modalUserAgreement">
+				<div class="flex justify-center items-center w-full">
+					<div class="border border-gray-200 rounded-lg shadow-lg bg-white w-11/12 md:max-w-lg mx-auto py-4 text-left" 
+						>
+
+						<div class="flex justify-between items-center pb-3 px-6">
+							<h3 class="text-lg font-medium leading-6 text-gray-900">
+								User Agreement
+							</h3>
+						</div>
+
+						<div class="w-full border-t border-gray-200 bg-gray-100 p-6">
+							<div class="mb-3">
+								<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-6">
+									You must accept the user agreement before continuing
+								</label> 
+								<div class=" text-sm px-4 rounded-lg border border-gray-200 bg-white w-full py-3 h-52 overflow-y-scroll">
+									Terms of Use
+
+									By accepting this agreement and accessing the wireless network, you acknowledge that you are of legal age, you have read and understood, and agree to be bound by this agreement.
+									(*) The wireless network service is provided by the property owners and is completely at their discretion. Your access to the network may be blocked, suspended, or terminated at any time for any reason.
+									(*) You agree not to use the wireless network for any purpose that is unlawful or otherwise prohibited and you are fully responsible for your use.
+									(*) The wireless network is provided "as is" without warranties of any kind, either expressed or implied. 
+								</div>
+							</div>
+						</div>
+						<div class="py-4 border-t border-gray-200 px-6">
+							<button onclick="myFunction()" class="bg-blue-400 text-white text-sm px-4 py-2 rounded-md">Agree and continue</button>
+						</div>
+
+					</div>
+				</div>
+			</div>		
+			$(endif)
+
+		</section>
+	</body>
+	<script type="text/javascript">
+		<!--
+		  document.login.username.focus();
+		//-->
+		function myFunction()
+		{
+			$('#modalUserAgreement').hide();
+		}
+	</script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Company Wi-fi > status</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
+		<link rel="stylesheet" type="text/css" media="all" href="css/tailwind.min.css">
+		$(if refresh-timeout)
+			<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+		$(endif)
+		<script language="JavaScript">
+			<!--
+			$(if advert-pending == 'yes')
+				var popup = '';
+				function focusAdvert() {
+				if (window.focus) popup.focus();
+				}
+				function openAdvert() {
+				popup = open('$(link-advert)', 'hotspot_advert', '');
+				setTimeout("focusAdvert()", 1000);
+				}
+			$(endif)
+				function openLogout() {
+				if (window.name != 'hotspot_status') return true;
+					open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+				window.close();
+				return false;
+				}
+			//-->
+		</script>
+	</head>
+	<body
+	$(if advert-pending == 'yes')
+		onLoad="openAdvert()"
+	$(endif)
+	>
+		<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+			<div class=" flex flex-col border-gray-200 bg-white border px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-lg w-50 max-w-md">
+
+				<div class="items-center flex justify-center">
+					<img src="img/logo.png" alt="Home" class="h-auto w-2/3" />
+				</div>
+				<div class="text-center">
+					<div class="">
+						$(if error)
+							<div class="text-xs italic text-red-500">$(error)</div>
+						$(endif)
+	
+						$(if login-by == 'trial')
+							<div class="text-base tracking-wide text-gray-500 uppercase font-bold">Welcome trial user!</div>
+						$(elif login-by != 'mac')
+							<div class="text-base tracking-wide text-gray-500 uppercase font-bold">Welcome $(username)!</div>
+						$(endif)
+					</div>
+				</div>
+				<form class="w-full" action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+					<table class="table table-striped table-responsive w-full my-3">
+						<tbody>
+							<tr class="border-b border-gray-200 tracking-wide text-sm">
+								<td class="py-2 text-gray-400 uppercase font-semibold">IP address:</td>
+								<td class="py-2 text-gray-800">$(ip)</td>
+							</tr>
+							<tr class="border-b border-gray-200 tracking-wide text-sm">
+								<td class="py-2 text-gray-400 uppercase font-semibold">bytes up/down</td>
+								<td class="py-2 text-gray-800">$(bytes-in-nice) / $(bytes-out-nice)</td>
+							</tr>
+							$(if session-time-left)
+							<tr class="border-b border-gray-200 tracking-wide text-sm">
+								<td class="py-2 text-gray-400 uppercase font-semibold">connected / left:</td>
+								<td class="py-2 text-gray-800">$(uptime) / $(session-time-left)</td>
+							</tr>
+							$(else)
+							<tr class="border-b border-gray-200 tracking-wide text-sm">
+								<td class="py-2 text-gray-400 uppercase font-semibold">connected:</td>
+								<td class="py-2 text-gray-800">$(uptime)</td>
+							</tr>
+							$(endif)
+							$(if blocked == 'yes')
+							<tr class="border-b border-gray-200 tracking-wide text-sm">
+								<td class="py-2 text-gray-400 uppercase font-semibold">status:</td>
+								<td class="py-2 text-gray-800">
+									<a href="$(link-advert)" target="hotspot_advert">advertisement</a> required
+								</td>
+							</tr>
+							$(elif refresh-timeout)
+							<tr class="border-b border-gray-200 tracking-wide text-sm">
+								<td class="py-2 text-gray-400 uppercase font-semibold">status refresh:</td>
+								<td class="py-2 text-gray-800">$(refresh-timeout)</td>
+							</tr>
+							$(endif)
+						</tbody>
+					</table>
+					$(if login-by-mac != 'yes')
+					<div class="w-full">
+						<input class="flex mt-2 items-center justify-center focus:outline-none text-white font-bold text-xs tracking-wide bg-blue-400 hover:bg-blue-500 rounded-lg py-3 w-full transition duration-150 ease-in uppercase" type="submit" value="Log Off">
+					</div>
+					$(endif)
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</html>
