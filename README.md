@@ -15,16 +15,16 @@ Just plug and play on your MikroTik router.
 ## Screenshots
 
 ### Login User Agreement
-![alt loginuseragreement](https://github.com/toffeegz/Tailwind-Mikrotik-Template/screenshot/login-user-agreement.png)
+![alt loginuseragreement](https://github.com/toffeegz/tailwind-mikrotik-template/blob/main/screenshot/login-user-agreement-modal.png)
 
 ### Login
-![alt login](https://github.com/toffeegz/Tailwind-Mikrotik-Template/screenshot/login.png)
+![alt login](https://github.com/toffeegz/tailwind-mikrotik-template/blob/main/screenshot/login.png)
 
 ### Status
-![alt status](https://github.com/toffeegz/Tailwind-Mikrotik-Template/screenshot/status.png)
+![alt status](https://github.com/toffeegz/tailwind-mikrotik-template/blob/main/screenshot/status.png)
 
 ### Logout
-![alt logout](https://github.com/toffeegz/Tailwind-Mikrotik-Template/screenshot/logout.png)
+![alt logout](https://github.com/toffeegz/tailwind-mikrotik-template/blob/main/screenshot/logout.png)
 
 ## About the Developer
 
