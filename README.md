@@ -28,7 +28,7 @@ Just plug and play on your MikroTik router.
 
 ## About the Developer
 
-Gezryl Beato Gallego (toffeegz) is a Full Stack Developer based in Philippines. Studying at Cavite State University and working as a Laravel Developer.
+Gezryl Beato Gallego (toffeegz) is a Full Stack Developer based in Philippines. Laravel & VueJS Developer.
 
 - [LinkedIn](https://www.linkedin.com/in/gezryl-clariz-beato-078312139/)
 - [Github](https://github.com/toffeegz)
